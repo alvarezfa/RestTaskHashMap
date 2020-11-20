@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -35,6 +37,11 @@ public class Servicio {
 	
 	public Task getTask(int id){
 		return tasks.get(id);
+	}
+	
+	public List<Task> getTasks(){
+		List<Task> listTasks = new ArrayList<>(tasks.values());
+		return listTasks;
 	}
 	
 }
