@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,14 +25,18 @@ public class Controller {
 	}
 	
 	@PutMapping("/{id}")
-	public void updateTask(@PathVariable int id,@RequestParam String name) throws Exception{
-		// update
-		service.updateTask(id,name);
+	public Task updateTask(@PathVariable int id,@RequestParam String name) throws Exception{
+		return service.updateTask(id,name);
 	}
 	
 	@DeleteMapping("/{name}")
-	public void deleteTas(@PathVariable int id){
-		// delete
+	public void deleteTas(@PathVariable int id) throws Exception{
+		service.deleteTask(id);
+	}
+	
+	@GetMapping("/{id}")
+	public Task getTask(@PathVariable int id){
+		return service.getTask(id);
 	}
 	
 	@GetMapping
@@ -41,14 +44,5 @@ public class Controller {
 		
 		return "tasks";
 	}
-	
-	
-	@GetMapping("/{id}")
-	public String getId(@PathVariable String id,@RequestParam String name, @RequestBody Person person){
-		return service.sayHi(id, person.getName(), person.getLastname());
-	}
-	
-	
-	
 
 }

@@ -18,26 +18,23 @@ public class Servicio {
 		return task;
 	}
 	
-	public void updateTask(int id, String name) throws Exception{
+	public Task updateTask(int id, String name) throws Exception{
 		Task task = tasks.get(id);
-		if(!ObjectUtils.isEmpty(task)){
-			task.setName(name);
-		}else{
+		if(ObjectUtils.isEmpty(task))
 			throw new Exception("Data not found.");
-		}
+		task.setName(name);
+		return task;
 	}
 	
-	public void deleteTast(int id) throws Exception{
+	public void deleteTask(int id) throws Exception{
 		Task task= tasks.get(id);
-		if(!ObjectUtils.isEmpty(task)){
-			tasks.remove(id);
-		}else{
+		if(ObjectUtils.isEmpty(task))
 			throw new Exception("Data not found.");
-		}
+		tasks.remove(id);
 	}
 	
-	public String sayHi(String id, String name, String lastname){
-		return "Hi "+ name + " "+lastname + " id: "+id;
+	public Task getTask(int id){
+		return tasks.get(id);
 	}
 	
 }
