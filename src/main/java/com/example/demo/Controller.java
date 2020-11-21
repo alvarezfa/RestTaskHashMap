@@ -31,7 +31,7 @@ public class Controller {
 		return service.updateTask(id,name);
 	}
 	
-	@DeleteMapping("/{name}")
+	@DeleteMapping("/{id}")
 	public void deleteTas(@PathVariable int id) throws Exception{
 		service.deleteTask(id);
 	}
